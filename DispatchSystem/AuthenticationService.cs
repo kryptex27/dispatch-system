@@ -34,14 +34,14 @@ namespace DispatchSystem
                 if (enteredUserName == user.UserName && enteredPassword == user.Password)
                 {
                     isLoggedIn = true;
-                    return "Login successful!";
+                    break;
                 }
-
                 else
                 {
                     Console.WriteLine("Invalid username or password. Please try again.");
                 }
             }
+            return "Login successful!";
 
         }
         private string Logout()
@@ -69,11 +69,12 @@ namespace DispatchSystem
                 if (choice == 2)
                 {
                     Console.WriteLine(Login());
-                    if (isLoggedIn == true)
-                    {
-                        Console.WriteLine("You are now logged in. You can perform your tasks.");
-                        continue;
-                    }
+
+                }
+
+                if(isLoggedIn == true)
+                {
+                    break;
                 }
 
             }
