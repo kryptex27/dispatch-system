@@ -6,48 +6,108 @@ namespace DispatchSystem
 {
     public class AuthenticationService
     {
-        User user = new User();
+        private User user = new User();
+
+       private bool isLoggedIn = false;
         private string Login()
         {
-
-            Console.WriteLine("UserName: ");
-            string enteredUserName = Console.ReadLine();
-
-            Console.WriteLine("Password: ");
-            string enteredPassword = Console.ReadLine();
-
-            if (enteredUserName == user.UserName && enteredPassword == user.Password)
+            while (true)
             {
-                return "Login successful!";
-            }
-            else
-            {
-                return "Invalid username or password.";
+                Console.WriteLine("UserName: ");
+                string enteredUserName = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(enteredUserName))
+                {
+                    Console.WriteLine("Username cannot be empty.");
+                    continue;
+                }
+
+                Console.WriteLine("Password: ");
+                string enteredPassword = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(enteredPassword))
+                {
+                    Console.WriteLine("Password cannot be empty.");
+                    continue;
+                }
+
+                if (enteredUserName == user.UserName && enteredPassword == user.Password)
+                {
+                    isLoggedIn = true;
+                    return "Login successful!";
+                }
+
+                else
+                {
+                    Console.WriteLine("Invalid username or password. Please try again.");
+                }
             }
 
         }
         private string Logout()
         {
+            isLoggedIn = false;
             return "Logout successful!";
         }
 
         public void StartSession()
         {
-            Console.WriteLine("Welcome to dispatch system!");
-            Console.WriteLine(Register());
-            Console.WriteLine(Login());
+
+            while (true)
+            {
+                Console.WriteLine("Please enter number for action: ");
+
+                Console.WriteLine("1. Register\n2. Login");
+
+                int choice = Convert.ToInt32(Console.ReadLine());
+
+                if (choice == 1)
+                {
+                    Console.WriteLine(Register());
+
+                }
+                if (choice == 2)
+                {
+                    Console.WriteLine(Login());
+                    if (isLoggedIn == true)
+                    {
+                        Console.WriteLine("You are now logged in. You can perform your tasks.");
+                        continue;
+                    }
+                }
+
+            }
+
         }
+
 
         private string Register()
         {
-            Console.WriteLine("Please enter UserName: ");
-            user.UserName = Console.ReadLine();
-            Console.WriteLine("Please enter Password");
-            user.Password = Console.ReadLine();
+            while(true)
+            {
+                Console.WriteLine("Please enter UserName: ");
+                user.UserName = Console.ReadLine();
 
-            return "Registration successful!";
+                if (string.IsNullOrEmpty(user.UserName))
+                {
+                    Console.WriteLine("Username cannot be empty.");
+                    continue;
+                }
 
+                Console.WriteLine("Please enter Password");
+                user.Password = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(user.Password))
+                {
+                    Console.WriteLine("Password cannot be empty.");
+                    continue;
+                }
+
+                return "Registration successful!";
+
+            }
         }
 
+   
     }
 }
