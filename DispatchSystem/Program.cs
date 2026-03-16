@@ -1,8 +1,9 @@
-﻿using DispatchSystem;
+﻿using DispatchSystem.Menus;
+AuthMenu authMenu = new AuthMenu();
 
-AuthenticationService auth = new AuthenticationService();
+authMenu.Start();
 
-auth.StartSession();
+
 
 
 

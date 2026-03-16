@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DispatchSystem
+namespace DispatchSystem.Models
 {
     public class Driver
     {
