@@ -3,6 +3,7 @@ using DispatchSystem.Services;
 using System;
 using System.Collections.Generic;
 using System.Reflection.Metadata;
+using System.Security.Principal;
 using System.Text;
 
 namespace DispatchSystem.Menus
@@ -21,7 +22,7 @@ namespace DispatchSystem.Menus
 
                 string choice = Console.ReadLine();
 
-                switch(choice)
+                switch (choice)
                 {
                     case "1":
                         HandleRegister();
@@ -30,7 +31,10 @@ namespace DispatchSystem.Menus
                         HandleLogin();
                         break;
                     case "3":
-                        HandleLogOut();
+                        if (auth.IsLoggedIn())
+                            HandleLogOut();
+                        else
+                            Console.WriteLine("Invalid choice.");
                         break;
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
@@ -40,31 +44,37 @@ namespace DispatchSystem.Menus
             }
         }
 
-        private void ShowMenu()
-        {
+private void ShowMenu()
+{
+    Console.WriteLine("\n=== Authentication Menu ===");
 
-            Console.WriteLine(@"
-          === Authentication Menu ===
-          1. Register
-          2. Login
-          3. Logout
-          ");
-        }
+    if (!auth.IsLoggedIn())
+    {
+        Console.WriteLine("1. Register");
+        Console.WriteLine("2. Login");
+    }
+    else
+    {
+        Console.WriteLine("3. Logout");
+    }
+}
         private void HandleLogin()
         {
             Console.WriteLine("Please enter UserName: ");
             string userName = Console.ReadLine();
+            userName = userName.Trim();
 
             Console.WriteLine("Please enter Password: ");
             string password = Console.ReadLine();
+            password = password.Trim();
 
-            
 
             bool result = auth.Login(userName, password);
 
             if (result == true)
             {
                 Console.WriteLine("Login successful!");
+
             }
             else if (result == false)
             {
@@ -81,6 +91,7 @@ namespace DispatchSystem.Menus
             Console.WriteLine("Please enter Password: ");
             string password = Console.ReadLine();
 
+
             bool result = auth.Register(userName, password);
 
             if (result == true)
@@ -94,9 +105,12 @@ namespace DispatchSystem.Menus
             }
 
         }
-        private void HandleLogOut() 
+        private void HandleLogOut()
         {
-            Console.WriteLine(auth.Logout());
+            string name = auth.GetCurrentUserName();
+            auth.Logout();
+            Console.WriteLine($"Good bye {name} ");
+
         }
     }
 }
