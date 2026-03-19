@@ -1,4 +1,5 @@
-﻿using DispatchSystem.Services;
+﻿using DispatchSystem.Models;
+using DispatchSystem.Services;
 using System;
 using System.Collections.Generic;
 using System.Reflection.Metadata;
@@ -81,11 +82,12 @@ namespace DispatchSystem.Menus
             string password = Console.ReadLine();
 
             bool result = auth.Register(userName, password);
-            
+
             if (result == true)
             {
                 Console.WriteLine("Registration successful!");
             }
+
             else if (result == false)
             {
                 Console.WriteLine("Registration failed! Please check your username and password.");
@@ -93,8 +95,8 @@ namespace DispatchSystem.Menus
 
         }
         private void HandleLogOut() 
-        { 
-            auth.Logout();
+        {
+            Console.WriteLine(auth.Logout());
         }
     }
 }
