@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DispatchSystem.Models
 {
-    public  class User
+     abstract class User
     {
         public int Id { get; set; }
 
@@ -12,7 +12,7 @@ namespace DispatchSystem.Models
 
         public string Password { get; set; }
 
-        public string Role { get; set; }
+        public int Role { get; set; }  
 
     }
 }

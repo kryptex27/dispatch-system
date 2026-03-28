@@ -2,9 +2,12 @@
 using DispatchSystem.Services;
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Reflection.Metadata;
+using System.Reflection.Metadata.Ecma335;
 using System.Security.Principal;
 using System.Text;
+using System.Threading.Channels;
 
 namespace DispatchSystem.Menus
 {
@@ -31,11 +34,12 @@ namespace DispatchSystem.Menus
                         HandleLogin();
                         break;
                     case "3":
-                        if (auth.IsLoggedIn())
-                            HandleLogOut();
-                        else
-                            Console.WriteLine("Invalid choice.");
+                        HandleChooseRole();
                         break;
+                    case "4":
+                        HandleLogOut();
+                        break;
+
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
                         break;
@@ -44,20 +48,22 @@ namespace DispatchSystem.Menus
             }
         }
 
-private void ShowMenu()
-{
-    Console.WriteLine("\n=== Authentication Menu ===");
+        private void ShowMenu()
+        {
+            Console.WriteLine("\n=== Authentication Menu ===");
 
-    if (!auth.IsLoggedIn())
-    {
-        Console.WriteLine("1. Register");
-        Console.WriteLine("2. Login");
-    }
-    else
-    {
-        Console.WriteLine("3. Logout");
-    }
-}
+            if (!auth.IsLoggedIn())
+            {
+                Console.WriteLine("1. Register");
+                Console.WriteLine("2. Login");
+            }
+            else
+            {
+                Console.WriteLine("3.ChooseRole");
+                Console.WriteLine("4. Logout");
+               
+            }
+        }
         private void HandleLogin()
         {
             Console.WriteLine("Please enter UserName: ");
@@ -86,7 +92,7 @@ private void ShowMenu()
         private void HandleRegister()
         {
             Console.WriteLine("Please enter UserName: ");
-            string userName= Console.ReadLine();
+            string userName = Console.ReadLine();
 
             Console.WriteLine("Please enter Password: ");
             string password = Console.ReadLine();
@@ -112,7 +118,45 @@ private void ShowMenu()
             Console.WriteLine($"Good bye {name} ");
 
         }
-    }
+
+        private void HandleChooseRole()
+        {
+            Console.WriteLine("Please enter your Role:");
+            Console.WriteLine("1. Dispatcher");
+            Console.WriteLine("2. HR");
+            Console.WriteLine("3. Operation");
+            Console.WriteLine("4. Admin");
+
+            int roleChoice = Convert.ToInt32(Console.ReadLine());
+
+             roleChoice = auth.ChooseRole(roleChoice);
+
+            if (roleChoice == 1)
+            {
+                auth.ChooseRole(roleChoice);
+                Console.WriteLine("You have chosen Dispatcher role.");
+            }
+            else if (roleChoice == 2)
+            {
+                auth.ChooseRole(roleChoice);
+                Console.WriteLine("You have chosen HR role.");
+            }
+            else if (roleChoice == 3)
+            {
+                auth.ChooseRole(roleChoice);
+                Console.WriteLine("You have chosen Operation role.");
+            }
+            else if (roleChoice == 4)
+            {
+                auth.ChooseRole(roleChoice);
+                Console.WriteLine("You have chosen Admin role.");
+            }
+            else
+            {
+                Console.WriteLine("Invalid role choice. Please try again.");
+            }
+         }
+     }
 }
 
 

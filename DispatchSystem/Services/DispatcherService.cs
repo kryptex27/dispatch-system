@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DispatchSystem.Messages
+namespace DispatchSystem.Services
 {
-    public class AuthMessages
+    public class DispatcherService
     {
 
     }

@@ -18,8 +18,6 @@ namespace DispatchSystem.Models
 
         public decimal Rate { get; set; }
 
-        public decimal DispatcherProfit { get; set; }
-
         public string Status { get; set; }
     }
 }
