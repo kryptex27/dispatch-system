@@ -137,25 +137,20 @@ namespace DispatchSystem.Menus
 
             roleChoice = auth.ChooseRole(roleChoice);
 
-
             if (roleChoice == 1)
             {
-                auth.ChooseRole(roleChoice);
                 Console.WriteLine("You have chosen Dispatcher role.");
             }
             else if (roleChoice == 2)
             {
-                auth.ChooseRole(roleChoice);
                 Console.WriteLine("You have chosen HR role.");
             }
             else if (roleChoice == 3)
             {
-                auth.ChooseRole(roleChoice);
                 Console.WriteLine("You have chosen Operation role.");
             }
             else if (roleChoice == 4)
             {
-                auth.ChooseRole(roleChoice);
                 Console.WriteLine("You have chosen Admin role.");
             }
             else

@@ -69,7 +69,7 @@ namespace DispatchSystem.Services
 
             currentUser = null;
 
-            if (string.IsNullOrEmpty(userName) && string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
                 isRegistered = false;
             }
