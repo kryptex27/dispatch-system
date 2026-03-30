@@ -4,15 +4,16 @@ using System.Text;
 
 namespace DispatchSystem.Models
 {
-     abstract class User
+    public abstract class User
     {
+
         public int Id { get; set; }
 
         public string UserName { get; set; }
 
         public string Password { get; set; }
 
-        public int Role { get; set; }  
+        public int Role { get; set; } = 0;
 
     }
 }

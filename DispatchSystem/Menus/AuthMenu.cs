@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using System.Reflection.Metadata;
 using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Channels;
@@ -14,7 +15,6 @@ namespace DispatchSystem.Menus
     public class AuthMenu
 
     {
-
         AuthenticationService auth = new AuthenticationService();
         public void Start()
         {
@@ -39,7 +39,6 @@ namespace DispatchSystem.Menus
                     case "4":
                         HandleLogOut();
                         break;
-
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
                         break;
@@ -52,16 +51,24 @@ namespace DispatchSystem.Menus
         {
             Console.WriteLine("\n=== Authentication Menu ===");
 
-            if (!auth.IsLoggedIn())
+            if (!auth.IsRegistered())
             {
                 Console.WriteLine("1. Register");
+            }
+
+            else if (auth.IsRegistered() && auth.GetCurrentUserRole() == 0)
+            {
+                Console.WriteLine("3. Choose Role");
+            }
+
+            else if (!auth.IsLoggedIn())
+            {
                 Console.WriteLine("2. Login");
             }
-            else
+
+            else if (auth.IsLoggedIn())
             {
-                Console.WriteLine("3.ChooseRole");
                 Console.WriteLine("4. Logout");
-               
             }
         }
         private void HandleLogin()
@@ -116,7 +123,6 @@ namespace DispatchSystem.Menus
             string name = auth.GetCurrentUserName();
             auth.Logout();
             Console.WriteLine($"Good bye {name} ");
-
         }
 
         private void HandleChooseRole()
@@ -129,7 +135,8 @@ namespace DispatchSystem.Menus
 
             int roleChoice = Convert.ToInt32(Console.ReadLine());
 
-             roleChoice = auth.ChooseRole(roleChoice);
+            roleChoice = auth.ChooseRole(roleChoice);
+
 
             if (roleChoice == 1)
             {
@@ -155,8 +162,9 @@ namespace DispatchSystem.Menus
             {
                 Console.WriteLine("Invalid role choice. Please try again.");
             }
-         }
-     }
+        }
+
+    }
 }
 
 
