@@ -8,6 +8,5 @@ namespace DispatchSystem.Models
     {
         public decimal DispatcherProfit { get; set; }
 
-
     }
 }

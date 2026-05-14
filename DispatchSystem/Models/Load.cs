@@ -21,5 +21,7 @@ namespace DispatchSystem.Models
         public decimal Profit { get; set; }
 
         public string Status { get; set; }
+
+        public decimal AvarageProfitRate { get; set; }
     }
 }
