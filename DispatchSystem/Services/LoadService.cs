@@ -39,6 +39,18 @@ namespace DispatchSystem.Services
                 Console.WriteLine("-----------------------------------------------------");
             }
         }
+
+        public Load GetLoadByLoadNumber(string loadNumber)
+        {
+            foreach (var load in loads)
+            {
+                if (load.LoadNumber == loadNumber)
+                {
+                    return load;
+                }
+            }
+            return null;
+        }
         public void DeleteLoad(string loadNumber)
         {
 
@@ -51,17 +63,19 @@ namespace DispatchSystem.Services
                     foundLoad = load;
                     break;
                 }
+            }
 
-                if (foundLoad != null)
-                {
-                    loads.Remove(foundLoad);
-                }
+            if (foundLoad != null)
+            {
+                loads.Remove(foundLoad);
             }
         }
 
-        public void CalculateAvarageProfitRate() 
-        { 
-            if(loads.Count > 0)
+        public decimal CalculateAvarageProfitRate()
+        {
+
+
+            if (loads.Count > 0)
             {
                 decimal totalProfit = 0;
 
@@ -71,6 +85,18 @@ namespace DispatchSystem.Services
                 }
                 decimal avarageProfitRate = totalProfit / loads.Count;
             }
+            return 0;
+        }
+
+
+        public decimal GetTotalProfit()
+        {
+            decimal totalProfit = 0;
+            foreach (var load in loads)
+            {
+                totalProfit += load.Profit;
+            }
+            return totalProfit;
         }
 
     }

@@ -157,6 +157,12 @@ namespace DispatchSystem.Menus
             {
                 Console.WriteLine("Invalid role choice. Please try again.");
             }
+
+            MenuManager menuManager = new MenuManager();
+
+            menuManager.currentUser = auth.GetCurrentUser();
+
+            menuManager.ShowMenu();
         }
 
     }

@@ -9,7 +9,6 @@ namespace DispatchSystem.Services
 {
     public class MenuManager
     {
-        IDriverActions driverService = new DriverService();
 
         DriverMenu driverMenu = new DriverMenu();
 

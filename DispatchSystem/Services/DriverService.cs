@@ -46,11 +46,24 @@ namespace DispatchSystem.Services
                     foundDriver = driver;
                     break;
                 }
-                if (foundDriver != null)
+            }
+
+            if (foundDriver != null)
+            {
+                drivers.Remove(foundDriver);
+            }
+        }
+
+        public Driver GetDriverByUnitNumber(int unitNumber)
+        {
+            foreach (var driver in drivers)
+            {
+                if (driver.UnitNumber == unitNumber)
                 {
-                    drivers.Remove(foundDriver);
+                    return driver;
                 }
             }
+            return null;
         }
     }
 }

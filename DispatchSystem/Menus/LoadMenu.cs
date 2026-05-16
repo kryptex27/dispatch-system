@@ -8,7 +8,12 @@ namespace DispatchSystem.Menus
 {
     public class LoadMenu
     {
-        LoadService loadService = new LoadService();
+        LoadService loadService;
+
+        public LoadMenu(LoadService loadService)
+        {
+            this.loadService = loadService;
+        }
 
         public void Addingload()
         {

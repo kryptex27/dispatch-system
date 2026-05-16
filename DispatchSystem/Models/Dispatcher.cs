@@ -6,7 +6,8 @@ namespace DispatchSystem.Models
 {
     internal class Dispatcher : User
     {
-        public decimal DispatcherProfit { get; set; }
+        public decimal Profit { get; set; }
+        public decimal AvarageProfit { get; set; }
 
     }
 }

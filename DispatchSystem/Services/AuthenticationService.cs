@@ -98,7 +98,7 @@ namespace DispatchSystem.Services
         public bool IsRegistered()
         {
             return isRegistered;
-        }   
+        }
 
 
         public int ChooseRole(int roleChoice)
@@ -170,6 +170,11 @@ namespace DispatchSystem.Services
                 }
             }
             return currentUser.Role;
+        }
+
+        public User GetCurrentUser()
+        {
+            return currentUser;
         }
     }
 }
