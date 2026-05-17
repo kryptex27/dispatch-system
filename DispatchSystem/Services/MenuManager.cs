@@ -21,7 +21,7 @@ namespace DispatchSystem.Services
         public MenuManager()
         {
             driverMenu = new DriverMenu(driverService);
-            dispatcherMenu = new DispatcherMenu(driverService);
+            dispatcherMenu = new DispatcherMenu(driverService, loadService);
             operationMenu = new OperationMenu(loadService, new OperationService());
         }
 

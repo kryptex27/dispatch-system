@@ -14,17 +14,17 @@ namespace DispatchSystem.Services
             driverMenu = new DriverMenu(driverService);
         }
 
-        public void CreateDriver(DriverService driverService)
+        public void CreateDriver( )
         {
             driverMenu.AddingDriver();
         }
 
-        public void ShowAllDrivers(DriverService driverService)
+        public void ShowAllDrivers()
         {
             driverMenu.ShowDrivers();
         }
 
-        public void DeleteDriver(DriverService driverService)
+        public void DeleteDriver()
         {
             driverMenu.DeleteDriver();
         }

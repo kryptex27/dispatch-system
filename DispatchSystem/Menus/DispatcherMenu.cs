@@ -10,7 +10,6 @@ namespace DispatchSystem.Menus
     public class DispatcherMenu
     {
         LoadMenu loadMenu;
-        LoadService loadService = new LoadService();
         DispatcherService dispatcherService = new DispatcherService();
         DriverService driverService;
 
