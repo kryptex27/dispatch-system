@@ -2,16 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading.Channels;
 
 namespace DispatchSystem.Menus
 {
     public class DriverMenu
     {
-        DriverService driverService = new DriverService();
-
-        DriverMenu driverMenu;
-
+        DriverService driverService;
         public DriverMenu(DriverService driverService)
         {
             this.driverService = driverService;
