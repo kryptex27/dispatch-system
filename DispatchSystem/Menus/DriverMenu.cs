@@ -10,6 +10,13 @@ namespace DispatchSystem.Menus
     {
         DriverService driverService = new DriverService();
 
+        DriverMenu driverMenu;
+
+        public DriverMenu(DriverService driverService)
+        {
+            this.driverService = driverService;
+        }   
+
         public void AddingDriver()
         {
             Console.WriteLine("Please enter First Name: ");

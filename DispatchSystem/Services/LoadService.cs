@@ -83,7 +83,7 @@ namespace DispatchSystem.Services
                 {
                     totalProfit += load.Profit;
                 }
-                decimal avarageProfitRate = totalProfit / loads.Count;
+                return totalProfit / loads.Count;
             }
             return 0;
         }
