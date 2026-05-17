@@ -10,8 +10,10 @@ namespace DispatchSystem.Services
     public class MenuManager
     {
         DriverService driverService = new DriverService();
+        LoadService loadService = new LoadService();
         DriverMenu driverMenu;
         DispatcherMenu dispatcherMenu;
+        OperationMenu operationMenu;
 
         public User currentUser;
         int choosedAction;
@@ -20,6 +22,7 @@ namespace DispatchSystem.Services
         {
             driverMenu = new DriverMenu(driverService);
             dispatcherMenu = new DispatcherMenu(driverService);
+            operationMenu = new OperationMenu(loadService, new OperationService());
         }
 
 

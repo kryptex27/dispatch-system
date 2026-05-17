@@ -14,12 +14,12 @@ namespace DispatchSystem.Menus
         DispatcherService dispatcherService = new DispatcherService();
         DriverService driverService;
 
-        public DispatcherMenu(DriverService driverService)
+        public DispatcherMenu(DriverService driverService, LoadService loadService)
         {
             this.driverService = driverService;
+            this.loadService = loadService;
             loadMenu = new LoadMenu(loadService);
         }
-
         public void AddingLoad()
         {
             loadMenu.Addingload();
