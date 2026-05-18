@@ -8,10 +8,9 @@ namespace DispatchSystem.Services
     internal class HrService
     {
         DriverMenu driverMenu;
-
-        public HrService(DriverService driverService)
+        public HrService(DriverMenu driverMenu)
         {
-            driverMenu = new DriverMenu(driverService);
+            this.driverMenu = driverMenu;
         }
 
         public void CreateDriver( )

@@ -26,7 +26,7 @@ namespace DispatchSystem.Menus
             driverMenu = new DriverMenu(driverService);
             dispatcherMenu = new DispatcherMenu(driverService, loadService);
             operationMenu = new OperationMenu(loadService, new OperationService());
-            hrService = new HrService(driverService);
+            hrService = new HrService(driverMenu);
             hrMenu = new HrMenu(hrService);
             loadMenu = new LoadMenu(loadService);
             adminMenu = new AdminMenu(driverMenu, loadMenu, operationMenu, dispatcherMenu, hrMenu);

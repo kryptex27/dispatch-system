@@ -39,6 +39,9 @@ namespace DispatchSystem.Menus
 
             dispatcherService.AssingLoadToDriver(driver, load);
 
+            load = loadService.GetLoadByLoadNumber(loadNumber);
+            Console.WriteLine(load == null ? "Load is NULL" : "Load found: " + load.LoadNumber);
+
         }
 
         public void ShowDispatcherMenu()

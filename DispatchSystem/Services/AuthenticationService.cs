@@ -60,6 +60,7 @@ namespace DispatchSystem.Services
         public void Logout()
         {
             isLoggedIn = false;
+            currentUser = null;
         }
 
         public bool Register(string userName, string password)
@@ -97,7 +98,7 @@ namespace DispatchSystem.Services
 
         public bool IsRegistered()
         {
-            return isRegistered;
+            return users.Count > 0;
         }
 
 

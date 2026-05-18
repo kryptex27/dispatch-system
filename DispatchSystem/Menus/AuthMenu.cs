@@ -51,24 +51,21 @@ namespace DispatchSystem.Menus
         {
             Console.WriteLine("\n=== Authentication Menu ===");
 
-            if (!auth.IsRegistered())
-            {
-                Console.WriteLine("1. Register");
-            }
-
-            else if (auth.IsRegistered() && auth.GetCurrentUserRole() == 0)
+            if (auth.IsLoggedIn() && auth.GetCurrentUserRole() == 0)
             {
                 Console.WriteLine("3. Choose Role");
             }
-
-            else if (!auth.IsLoggedIn())
-            {
-                Console.WriteLine("2. Login");
-            }
-
             else if (auth.IsLoggedIn())
             {
                 Console.WriteLine("4. Logout");
+            }
+            else if (auth.IsRegistered())
+            {
+                Console.WriteLine("2. Login");
+            }
+            else
+            {
+                Console.WriteLine("1. Register");
             }
         }
         private void HandleLogin()
