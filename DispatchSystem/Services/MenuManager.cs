@@ -1,5 +1,4 @@
-﻿using DispatchSystem.Interfaces;
-using DispatchSystem.Menus;
+﻿using DispatchSystem.Menus;
 using DispatchSystem.Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +13,10 @@ namespace DispatchSystem.Services
         DriverMenu driverMenu;
         DispatcherMenu dispatcherMenu;
         OperationMenu operationMenu;
+        HrService hrService;
+        LoadMenu loadMenu;
+        HrMenu hrMenu;
+        AdminMenu adminMenu;
 
         public User currentUser;
         int choosedAction;
@@ -23,54 +26,30 @@ namespace DispatchSystem.Services
             driverMenu = new DriverMenu(driverService);
             dispatcherMenu = new DispatcherMenu(driverService, loadService);
             operationMenu = new OperationMenu(loadService, new OperationService());
+            hrService = new HrService(driverService);
+            hrMenu = new HrMenu(hrService);
+            loadMenu = new LoadMenu(loadService);
+            adminMenu = new AdminMenu(driverMenu, loadMenu, operationMenu, hrService, dispatcherMenu);
         }
 
 
         public void ShowMenu()
         {
-            if (currentUser.Role == 2)
-            {
-                Console.WriteLine("1. Add Driver");
-                Console.WriteLine("2. Show All Drivers");
-                Console.WriteLine("3. Delete Driver");
-
-                choosedAction = Convert.ToInt32(Console.ReadLine());
-
-                if (choosedAction == 1)
-                {
-                    driverMenu.AddingDriver();
-                }
-                else if (choosedAction == 2)
-                {
-                    driverMenu.ShowDrivers();
-                }
-                else if (choosedAction == 3)
-                {
-                    driverMenu.DeleteDriver();
-                }
-            }
-
             if (currentUser.Role == 1)
             {
-                Console.WriteLine("1.Show All Drivers ");
-
-                choosedAction = Convert.ToInt32(Console.ReadLine());
-
-                if (choosedAction == 1)
-                {
-                    driverMenu.ShowDrivers();
-                }
-
+                dispatcherMenu.ShowDispatcherMenu();
             }
-
-            if (currentUser.Role == 3)
+            else if (currentUser.Role == 2)
             {
-
+                hrMenu.ShowHrMenu();
             }
-
-            if(currentUser.Role == 4)
+            else if (currentUser.Role == 3)
             {
-
+                operationMenu.ShowOperationMenu();
+            }
+            else if (currentUser.Role == 4)
+            {
+                adminMenu.ShowAdminMenu();
             }
         }
 

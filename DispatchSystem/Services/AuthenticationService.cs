@@ -105,71 +105,23 @@ namespace DispatchSystem.Services
         {
             if (currentUser.Role == 0)
             {
-                currentUser.Role = roleChoice;
-
-                if (currentUser.Role == 1)
-                {
-                    User dispatcherUser = new Dispatcher();
-                    {
-                        dispatcherUser.UserName = currentUser.UserName;
-                        dispatcherUser.Password = currentUser.Password;
-                        dispatcherUser.Id = currentUser.Id;
-                        dispatcherUser.Role = 1;
-
-                        users.Remove(currentUser);
-                        users.Add(dispatcherUser);
-
-                        currentUser = dispatcherUser;
-                    }
-
-                }
-
-                if (currentUser.Role == 2)
-                {
-                    User hrUser = new Hr();
-                    {
-                        hrUser.UserName = currentUser.UserName;
-                        hrUser.Password = currentUser.Password;
-                        hrUser.Id = currentUser.Id;
-                        hrUser.Role = 2;
-
-                        users.Remove(currentUser);
-                        users.Add(hrUser);
-                        currentUser = hrUser;
-                    }
-
-                }
-
-                if (currentUser.Role == 3)
-                {
-                    User operationUser = new Operation();
-                    {
-                        operationUser.UserName = currentUser.UserName;
-                        operationUser.Password = currentUser.Password;
-                        operationUser.Id = currentUser.Id;
-                        operationUser.Role = 3;
-
-                        users.Remove(currentUser);
-                        users.Add(operationUser);
-                        currentUser = operationUser;
-                    }
-                }
-
-                if (currentUser.Role == 4)
-                {
-                    User adminUser = new Admin();
-                    {
-                        adminUser.UserName = currentUser.UserName;
-                        adminUser.Password = currentUser.Password;
-                        adminUser.Id = currentUser.Id;
-                        adminUser.Role = 4;
-                        users.Remove(currentUser);
-                        users.Add(adminUser);
-                        currentUser = adminUser;
-                    }
-                }
+                if (roleChoice == 1) SetUserProperties(new Dispatcher(), 1);
+                else if (roleChoice == 2) SetUserProperties(new Hr(), 2);
+                else if (roleChoice == 3) SetUserProperties(new Operation(), 3);
+                else if (roleChoice == 4) SetUserProperties(new Admin(), 4);
             }
             return currentUser.Role;
+        }
+
+        private void SetUserProperties(User newUser, int role)
+        {
+            newUser.UserName = currentUser.UserName;
+            newUser.Password = currentUser.Password;
+            newUser.Id = currentUser.Id;
+            newUser.Role = role;
+            users.Remove(currentUser);
+            users.Add(newUser);
+            currentUser = newUser;
         }
 
         public User GetCurrentUser()

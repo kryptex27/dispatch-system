@@ -103,5 +103,37 @@ namespace DispatchSystem.Menus
             }
 
         }
+
+        public void ShowOperationMenu()
+        {
+            Console.WriteLine("1. Mark Load as Delivered");
+            Console.WriteLine("2. Mark Load as Picking Up");
+            Console.WriteLine("3. Mark Load as Picked Up");
+            Console.WriteLine("4. Mark Load as Cancelled");
+            Console.WriteLine("5. Mark Load as In Transit");
+
+            int choosedAction = Convert.ToInt32(Console.ReadLine());
+
+            if (choosedAction == 1)
+            {
+                MarkAsDelivered();
+            }
+            else if (choosedAction == 2)
+            {
+                MarkAsPickingUp();
+            }
+            else if (choosedAction == 3)
+            {
+                MarkAsPickedUp();
+            }
+            else if (choosedAction == 4)
+            {
+                MarkAsCancelled();
+            }
+            else if (choosedAction == 5)
+            {
+                MarkAsInTransit();
+            }
+        }
     }
 }
