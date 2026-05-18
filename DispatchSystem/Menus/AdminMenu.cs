@@ -10,19 +10,18 @@ namespace DispatchSystem.Menus
         DriverMenu driverMenu;
         LoadMenu loadMenu;
         OperationMenu operationMenu;
-        HrService hrService;
         DispatcherMenu dispatcherMenu;
         HrMenu hrMenu;
 
-        public AdminMenu(DriverMenu driverMenu, LoadMenu loadMenu, OperationMenu operationMenu, HrService hrService, DispatcherMenu dispatcherMenu, HrMenu hrMenu)
+        public AdminMenu(DriverMenu driverMenu, LoadMenu loadMenu, OperationMenu operationMenu, DispatcherMenu dispatcherMenu, HrMenu hrMenu)
         {
             this.driverMenu = driverMenu;
             this.loadMenu = loadMenu;
             this.operationMenu = operationMenu;
-            this.hrService = hrService;
             this.dispatcherMenu = dispatcherMenu;
             this.hrMenu = hrMenu;
         }
+
         public void ShowAdminMenu()
         {
             while (true)

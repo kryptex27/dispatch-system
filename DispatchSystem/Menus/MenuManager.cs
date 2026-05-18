@@ -1,10 +1,10 @@
-﻿using DispatchSystem.Menus;
-using DispatchSystem.Models;
+﻿using DispatchSystem.Models;
+using DispatchSystem.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DispatchSystem.Services
+namespace DispatchSystem.Menus
 {
     public class MenuManager
     {
@@ -29,7 +29,7 @@ namespace DispatchSystem.Services
             hrService = new HrService(driverService);
             hrMenu = new HrMenu(hrService);
             loadMenu = new LoadMenu(loadService);
-            adminMenu = new AdminMenu(driverMenu, loadMenu, operationMenu, hrService, dispatcherMenu);
+            adminMenu = new AdminMenu(driverMenu, loadMenu, operationMenu, dispatcherMenu, hrMenu);
         }
 
 

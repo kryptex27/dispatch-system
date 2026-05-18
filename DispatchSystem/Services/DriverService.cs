@@ -1,12 +1,11 @@
-﻿using DispatchSystem.Interfaces;
-using DispatchSystem.Models;
+﻿using DispatchSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DispatchSystem.Services
 {
-    public class DriverService : IDriverActions
+    public class DriverService
     {
         List<Driver> drivers = new List<Driver>();
 

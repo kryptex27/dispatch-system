@@ -1,5 +1,4 @@
-﻿using DispatchSystem.Interfaces;
-using DispatchSystem.Models;
+﻿using DispatchSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Text;
 namespace DispatchSystem.Services
 {
 
-    public class LoadService : ILoadActions
+    public class LoadService
     {
         private List<Load> loads = new List<Load>();
 
